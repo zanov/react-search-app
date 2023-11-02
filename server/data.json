@@ -2,33 +2,93 @@
   "articles": [
     {
       "id": 1,
-      "title": "approved",
-      "description": "Merchant_115",
-      "created_at": "2017-06-16 06:30:02"
+      "title": "Lorem Ipsum is simply dummy text",
+      "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "url": "https://example1.com"
     },
     {
       "id": 2,
-      "title": "error",
-      "description": "Merchant_126",
-      "created_at": "2017-07-16 13:01:32"
+      "title": "It is a long established fact",
+      "description": "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+      "url": "https://example2.com"
     },
     {
       "id": 3,
-      "title": "error",
-      "description": "Merchant_127",
-      "created_at": "2017-08-16 16:01:32"
+      "title": "Contrary to popular belief, Lorem Ipsum is not simply random text",
+      "description": "It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+      "url": "https://example3.com"
     },
     {
       "id": 4,
-      "title": "approved",
-      "description": "Merchant_128",
-      "created_at": "2017-09-16 12:01:32"
+      "title": "Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia",
+      "description": "discovered one of the most obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.",
+      "url": "https://example4.com"
     },
     {
-      "id": 4,
-      "title": "approved",
-      "description": "Merchant_129",
-      "created_at": "2017-02-16 18:01:32"
+      "id": 5,
+      "title": "Lorem Ipsum comes from sections 1.10.32 and 1.10.33",
+      "description": "The first line of Lorem Ipsum, 'Lorem ipsum dolor sit amet...', comes from a line in section 1.10.32.",
+      "url": "https://example5.com"
+    },
+    {
+      "id": 6,
+      "title": "There are many variations of passages of Lorem Ipsum available",
+      "description": "but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
+      "url": "https://example6.com"
+    },
+    {
+      "id": 7,
+      "title": "If you are going to use a passage of Lorem Ipsum",
+      "description": "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.",
+      "url": "https://example7.com"
+    },
+    {
+      "id": 8,
+      "title": "The generated Lorem Ipsum is therefore always free from repetition",
+      "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.",
+      "url": "https://example8.com"
+    },
+    {
+      "id": 9,
+      "title": "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested",
+      "description": "Sections 1.10.32 and 1.10.33 from 'de Finibus Bonorum et Malorum' by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
+      "url": "https://example9.com"
+    },
+    {
+      "id": 10,
+      "title": "Nor again is there anyone who loves or pursues or desires to obtain pain of itself",
+      "description": "because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure.",
+      "url": "https://example11.com"
+    },
+    {
+      "id": 11,
+      "title": "To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it?",
+      "description": "But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?",
+      "url": "https://example12.com"
+    },
+    {
+      "id": 12,
+      "title": "On the other hand, we denounce with righteous indignation",
+      "description": "so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.",
+      "url": "https://example13.com"
+    },
+    {
+      "id": 13,
+      "title": "Duis aute irure dolor in reprehenderit in voluptate",
+      "description": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "url": "https://example14.com"
+    },
+    {
+      "id": 14,
+      "title": "Sed ut perspiciatis unde omnis iste",
+      "description": "totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+      "url": "https://example15.com"
+    },
+    {
+      "id": 15,
+      "title": "Nemo enim ipsam voluptatem quia voluptas sit",
+      "description": "neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+      "url": "https://example16.com"
     }
   ]
 }

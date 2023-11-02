@@ -1,5 +1,5 @@
 {
-  "name": "react-data-list",
+  "name": "react-search-app",
   "version": "1.0.0",
   "description": "SPA search app",
   "main": "index.tsx",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zanov/react-data-list.git"
+    "url": "git+https://github.com/zanov/react-search-app.git"
   },
   "author": "Ivo Tsanov",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/zanov/react-data-list/issues"
+    "url": "https://github.com/zanov/react-search-app/issues"
   },
-  "homepage": "https://github.com/zanov/react-data-list#readme",
+  "homepage": "https://github.com/zanov/react-search-app#readme",
   "dependencies": {
     "@babel/core": "^7.23.2",
     "@babel/preset-typescript": "^7.23.2",

@@ -3,10 +3,22 @@ export const FETCH_ALL_ITEMS_SUCCESS = 'FETCH_ALL_ITEMS_SUCCESS';
 export const FETCH_ALL_ITEMS_FAILURE = 'FETCH_ALL_ITEMS_FAILURE';
 
 export const SET_SUGGESTIONS = 'SET_SUGGESTIONS';
+export const CLEAR_SUGGESTION = 'CLEAR_SUGGESTION';
+export const SET_SEARCH_LIST = 'SET_SEARCH_LIST';
 
 export const setSuggestions = (suggestions: string[]) => ({
   type: SET_SUGGESTIONS,
   suggestions,
+});
+
+export const clearSuggestion = (title: string) => ({
+  type: CLEAR_SUGGESTION,
+  title,
+});
+
+export const setSearchList = (results: object[]) => ({
+  type: SET_SEARCH_LIST,
+  payload: results,
 });
 
 export const fetchAllItemsBegin = () => ({

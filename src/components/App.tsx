@@ -1,16 +1,16 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Autocomplete from 'Components/Autocomplete';
-import {useDispatch} from 'react-redux';
-import {fetchAllItems} from 'Redux/actions';
+import SearchList from './SearchList';
+import useFetchItems from 'src/hooks/useFetchItems';
 
 const App = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchAllItems());
-  }, []);
+  useFetchItems();
   return (
-    <div>
-      <Autocomplete />
+    <div className='container'>
+      <div className='row'>
+        <Autocomplete />
+        <SearchList />
+      </div>
     </div>
   );
 };
