@@ -6,13 +6,19 @@ import {
   SET_SUGGESTIONS,
 } from 'Redux/actions';
 
-const initialState = {
+const autocompleteInitialState = {
   suggestions: [] as string[],
-  items: [] as object[],
-  searchList: [] as object[],
 };
 
-const autocompleteReducer = (state = initialState, action: any) => {
+const itemsInitialState = {
+  items: [] as object[],
+};
+
+const searchListInitialState = {
+  items: [] as object[],
+};
+
+const autocompleteReducer = (state = autocompleteInitialState, action: any) => {
   switch (action.type) {
     case SET_SUGGESTIONS:
       return {
@@ -29,7 +35,7 @@ const autocompleteReducer = (state = initialState, action: any) => {
   }
 };
 
-const itemsReducer = (state = initialState, action: any) => {
+const itemsReducer = (state = itemsInitialState, action: any) => {
   switch (action.type) {
     case FETCH_ALL_ITEMS_SUCCESS:
       return {
@@ -41,7 +47,7 @@ const itemsReducer = (state = initialState, action: any) => {
   }
 };
 
-const searchListReducer = (state = initialState, action: any) => {
+const searchListReducer = (state = searchListInitialState, action: any) => {
   switch (action.type) {
     case SET_SEARCH_LIST:
       return {
