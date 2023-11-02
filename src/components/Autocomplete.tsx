@@ -8,7 +8,7 @@ const Autocomplete: React.FC = () => {
   const [isSuggestionsVisible, setIsSuggestionsVisible] = useState(false);
   const suggestions = useSelector((state: RootState) => state.autocomplete.suggestions);
   const fetchedSuggestions = useSelector(
-    (state: RootState) => state.articles?.items?.map((res) => res.title),
+    (state: RootState) => state.articles?.items?.map((res: any) => res.title),
   );
   const fetchedItems = useSelector((state: RootState) => state.articles?.items);
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ const Autocomplete: React.FC = () => {
   };
 
   const handleSelect = (selectedTitle: string) => {
-    const results = fetchedItems.filter((item: object) =>
+    const results = fetchedItems.filter((item: any) =>
       item.title.toLowerCase().includes(selectedTitle.toLowerCase()),
     );
     dispatch(setSearchList(results));
@@ -54,18 +54,20 @@ const Autocomplete: React.FC = () => {
   };
 
   return (
-    <div className='m-2'>
+    <div className='m-2 col-md-12'>
       <label htmlFor='autocomplete'>Autocomplete Search Input</label>
-      <br />
-      <input
-        id='autocomplete'
-        type='text'
-        placeholder='Search...'
-        value={searchTerm}
-        onChange={handleInputChange}
-        onFocus={handleFocus}
-        ref={inputRef}
-      />
+      <div className='input-group mb-3'>
+        <input
+          id='autocomplete'
+          type='text'
+          placeholder='Search...'
+          value={searchTerm}
+          onChange={handleInputChange}
+          onFocus={handleFocus}
+          ref={inputRef}
+          className='form-control'
+        />
+      </div>
       <ul>
         {isSuggestionsVisible &&
           suggestions.map((suggestion: string, index: number) => (
@@ -74,10 +76,8 @@ const Autocomplete: React.FC = () => {
               {suggestions.includes(suggestion) && (
                 <button
                   onClick={(e) => handleClearSuggestion(suggestion, e)}
-                  className='remove-button'
-                >
-                  X
-                </button>
+                  className='btn-close'
+                ></button>
               )}
             </li>
           ))}
