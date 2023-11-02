@@ -13,6 +13,7 @@ const Autocomplete: React.FC = () => {
   const fetchedItems = useSelector((state: RootState) => state.articles?.items);
   const dispatch = useDispatch();
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const blurTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (inputRef.current) {
@@ -48,14 +49,28 @@ const Autocomplete: React.FC = () => {
     setIsSuggestionsVisible(true);
   };
 
+  const handleBlur = () => {
+    blurTimeoutRef.current = window.setTimeout(() => {
+      setIsSuggestionsVisible(false);
+    }, 200);
+  };
+
   const handleClearSuggestion = (title: string, event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(clearSuggestion(title));
-    event.stopPropagation();
+  };
+
+  const handleSuggestionFocus = () => {
+    if (blurTimeoutRef.current) {
+      clearTimeout(blurTimeoutRef.current);
+      blurTimeoutRef.current = null;
+    }
   };
 
   return (
     <div className='m-2 col-md-12'>
-      <label htmlFor='autocomplete'>Autocomplete Search Input</label>
+      <label htmlFor='autocomplete' className='mb-2'>
+        Autocomplete Search Input
+      </label>
       <div className='input-group mb-3'>
         <input
           id='autocomplete'
@@ -64,6 +79,7 @@ const Autocomplete: React.FC = () => {
           value={searchTerm}
           onChange={handleInputChange}
           onFocus={handleFocus}
+          onBlur={handleBlur}
           ref={inputRef}
           className='form-control'
         />
@@ -71,8 +87,14 @@ const Autocomplete: React.FC = () => {
       <ul>
         {isSuggestionsVisible &&
           suggestions.map((suggestion: string, index: number) => (
-            <li key={index} style={{cursor: 'pointer'}} onClick={() => handleSelect(suggestion)}>
-              {suggestion}{' '}
+            <li key={index}>
+              <span
+                style={{cursor: 'pointer'}}
+                onClick={() => handleSelect(suggestion)}
+                onFocus={handleSuggestionFocus}
+              >
+                {suggestion}
+              </span>{' '}
               {suggestions.includes(suggestion) && (
                 <button
                   onClick={(e) => handleClearSuggestion(suggestion, e)}
