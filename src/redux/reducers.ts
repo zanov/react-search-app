@@ -1,7 +1,9 @@
 import {combineReducers} from 'redux';
 import {
+  CLEAR_RECENT_ITEM_TITLE,
   CLEAR_SUGGESTION,
   FETCH_ALL_ITEMS_SUCCESS,
+  SET_RECENT_ITEM_TITLE,
   SET_SEARCH_LIST,
   SET_SUGGESTIONS,
 } from 'Redux/actions';
@@ -16,6 +18,10 @@ const itemsInitialState = {
 
 const searchListInitialState = {
   items: [] as object[],
+};
+
+const recentHistoryInitialState = {
+  titles: [] as string[],
 };
 
 const autocompleteReducer = (state = autocompleteInitialState, action: any) => {
@@ -59,10 +65,28 @@ const searchListReducer = (state = searchListInitialState, action: any) => {
   }
 };
 
+const recentHistoryReducer = (state = recentHistoryInitialState, action: any) => {
+  switch (action.type) {
+    case SET_RECENT_ITEM_TITLE:
+      return {
+        ...state,
+        titles: [...state.titles, action.title],
+      };
+    case CLEAR_RECENT_ITEM_TITLE:
+      return {
+        ...state,
+        titles: state.titles.filter((item) => item !== action.title),
+      };
+    default:
+      return state;
+  }
+};
+
 const rootReducer = combineReducers({
   autocomplete: autocompleteReducer,
   articles: itemsReducer,
   searchList: searchListReducer,
+  recentHistory: recentHistoryReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

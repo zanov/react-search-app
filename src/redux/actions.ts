@@ -6,6 +6,9 @@ export const SET_SUGGESTIONS = 'SET_SUGGESTIONS';
 export const CLEAR_SUGGESTION = 'CLEAR_SUGGESTION';
 export const SET_SEARCH_LIST = 'SET_SEARCH_LIST';
 
+export const SET_RECENT_ITEM_TITLE = 'SET_RECENT_ITEM_TITLE';
+export const CLEAR_RECENT_ITEM_TITLE = 'CLEAR_RECENT_ITEM_TITLE';
+
 export const setSuggestions = (suggestions: string[]) => ({
   type: SET_SUGGESTIONS,
   suggestions,
@@ -13,6 +16,16 @@ export const setSuggestions = (suggestions: string[]) => ({
 
 export const clearSuggestion = (title: string) => ({
   type: CLEAR_SUGGESTION,
+  title,
+});
+
+export const setRecentHistoryTitle = (title: string) => ({
+  type: SET_RECENT_ITEM_TITLE,
+  title,
+});
+
+export const clearRecentHistoryTitle = (title: string) => ({
+  type: CLEAR_RECENT_ITEM_TITLE,
   title,
 });
 

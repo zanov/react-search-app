@@ -1,6 +1,12 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef, useCallback} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {setSuggestions, setSearchList, clearSuggestion} from 'Redux/actions';
+import {
+  setSuggestions,
+  setSearchList,
+  clearSuggestion,
+  setRecentHistoryTitle,
+  clearRecentHistoryTitle,
+} from 'Redux/actions';
 import {RootState} from 'Redux/configureStore';
 
 const Autocomplete: React.FC = () => {
@@ -11,6 +17,7 @@ const Autocomplete: React.FC = () => {
     (state: RootState) => state.articles?.items?.map((res: any) => res.title),
   );
   const fetchedItems = useSelector((state: RootState) => state.articles?.items);
+  const recentHistoryTitles = useSelector((state: RootState) => state.recentHistory?.titles);
   const dispatch = useDispatch();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const blurTimeoutRef = useRef<number | null>(null);
@@ -42,6 +49,7 @@ const Autocomplete: React.FC = () => {
       item.title.toLowerCase().includes(selectedTitle.toLowerCase()),
     );
     dispatch(setSearchList(results));
+    dispatch(setRecentHistoryTitle(selectedTitle));
     setIsSuggestionsVisible(false);
   };
 
@@ -55,8 +63,9 @@ const Autocomplete: React.FC = () => {
     }, 200);
   };
 
-  const handleClearSuggestion = (title: string, event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleClearSuggestion = (title: string) => {
     dispatch(clearSuggestion(title));
+    dispatch(clearRecentHistoryTitle(title));
   };
 
   const handleSuggestionFocus = () => {
@@ -65,6 +74,30 @@ const Autocomplete: React.FC = () => {
       blurTimeoutRef.current = null;
     }
   };
+
+  const renderSuggestion = useCallback(
+    (suggestion: string, index: number) => {
+      return (
+        <li key={index}>
+          <span
+            style={{cursor: 'pointer'}}
+            onClick={() => handleSelect(suggestion)}
+            onFocus={handleSuggestionFocus}
+            className={`${recentHistoryTitles.includes(suggestion) ? 'fw-bold' : ''}`}
+          >
+            {suggestion}
+          </span>{' '}
+          {suggestions.includes(suggestion) && (
+            <button
+              onClick={(e) => handleClearSuggestion(suggestion)}
+              className='btn-close'
+            ></button>
+          )}
+        </li>
+      );
+    },
+    [suggestions],
+  );
 
   return (
     <div className='m-2 col-md-12'>
@@ -86,23 +119,9 @@ const Autocomplete: React.FC = () => {
       </div>
       <ul>
         {isSuggestionsVisible &&
-          suggestions.map((suggestion: string, index: number) => (
-            <li key={index}>
-              <span
-                style={{cursor: 'pointer'}}
-                onClick={() => handleSelect(suggestion)}
-                onFocus={handleSuggestionFocus}
-              >
-                {suggestion}
-              </span>{' '}
-              {suggestions.includes(suggestion) && (
-                <button
-                  onClick={(e) => handleClearSuggestion(suggestion, e)}
-                  className='btn-close'
-                ></button>
-              )}
-            </li>
-          ))}
+          suggestions.map((suggestion: string, index: number) =>
+            renderSuggestion(suggestion, index),
+          )}
       </ul>
     </div>
   );
