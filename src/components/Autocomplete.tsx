@@ -96,7 +96,7 @@ const Autocomplete: React.FC = () => {
         </li>
       );
     },
-    [suggestions],
+    [suggestions, recentHistoryTitles],
   );
 
   return (
