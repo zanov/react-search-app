@@ -1,16 +1,14 @@
 import {createSelector} from 'reselect';
 import {RootState} from './configureStore';
 
-// SearchList selectors - these need memoization because they transform data
+// SearchList selectors - only memoize the one that transforms data
 export const selectSearchListItems = createSelector(
   [(state: RootState) => state.searchList?.items],
   (items) => items || [],
 );
 
-export const selectSearchListDuration = createSelector(
-  [(state: RootState) => state.searchList?.duration],
-  (duration) => duration || 0,
-);
+// Simple selectors - no need for memoization since they just return primitive values or direct references
+export const selectSearchListDuration = (state: RootState) => state.searchList?.duration || 0;
 
 // Autocomplete selectors - only memoize the ones that transform data
 export const selectFetchedSuggestions = createSelector(
