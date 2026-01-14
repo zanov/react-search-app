@@ -25,7 +25,7 @@ const recentHistoryInitialState = {
   titles: [] as string[],
 };
 
-const autocompleteReducer = (state = autocompleteInitialState, action: any) => {
+export const autocompleteReducer = (state = autocompleteInitialState, action: any) => {
   switch (action.type) {
     case SET_SUGGESTIONS:
       return {
@@ -42,7 +42,7 @@ const autocompleteReducer = (state = autocompleteInitialState, action: any) => {
   }
 };
 
-const itemsReducer = (state = itemsInitialState, action: any) => {
+export const itemsReducer = (state = itemsInitialState, action: any) => {
   switch (action.type) {
     case FETCH_ALL_ITEMS_SUCCESS:
       return {
@@ -54,7 +54,7 @@ const itemsReducer = (state = itemsInitialState, action: any) => {
   }
 };
 
-const searchListReducer = (state = searchListInitialState, action: any) => {
+export const searchListReducer = (state = searchListInitialState, action: any) => {
   switch (action.type) {
     case SET_SEARCH_LIST: {
       const start = action.meta?.startTime;
@@ -70,7 +70,7 @@ const searchListReducer = (state = searchListInitialState, action: any) => {
   }
 };
 
-const recentHistoryReducer = (state = recentHistoryInitialState, action: any) => {
+export const recentHistoryReducer = (state = recentHistoryInitialState, action: any) => {
   switch (action.type) {
     case SET_RECENT_ITEM_TITLE:
       return {

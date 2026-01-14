@@ -62,7 +62,9 @@ export const fetchAllItems = (filters = {}) => {
       })
       .catch((err) => {
         dispatch(fetchAllItemsFailure(err));
-        console.error('Error fetching data:', err);
+        if (process.env.NODE_ENV !== 'test') {
+          console.error('Error fetching data:', err);
+        }
         return Promise.reject(err);
       });
   };

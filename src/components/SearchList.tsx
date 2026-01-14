@@ -1,11 +1,12 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import {RootState} from 'src/redux/reducers';
+import {selectSearchListItems, selectSearchListDuration} from '../redux/selectors';
 import SearchListItem from './SearchListItem';
 
 const SearchList = () => {
-  const searchListItems = useSelector((state: RootState) => state.searchList?.items || []);
-  const duration = useSelector((state: RootState) => state.searchList?.duration || 0);
+  const searchListItems = useSelector(selectSearchListItems);
+  const duration = useSelector(selectSearchListDuration);
 
   const seconds = (duration / 1000).toFixed(3);
 

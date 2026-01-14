@@ -1,8 +1,8 @@
 import React, {memo} from 'react';
 
-const SearchListItem = memo(function SearchListItem({key, item}: any) {
+const SearchListItem = memo(function SearchListItem({item}: any) {
   return (
-    <div key={key} className='mb-4'>
+    <div className='mb-4'>
       <h5>
         <a href={item.url} target='_blank'>
           {item.title}

@@ -8,16 +8,20 @@ import {
   clearRecentHistoryTitle,
 } from 'Redux/actions';
 import {RootState} from 'Redux/configureStore';
+import {
+  selectFetchedSuggestions,
+  selectFetchedItems,
+  selectRecentHistoryTitles,
+  selectAutocompleteSuggestions,
+} from '../redux/selectors';
 
 const Autocomplete: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isSuggestionsVisible, setIsSuggestionsVisible] = useState(false);
-  const suggestions = useSelector((state: RootState) => state.autocomplete.suggestions);
-  const fetchedSuggestions = useSelector(
-    (state: RootState) => state.articles?.items?.map((res: any) => res.title),
-  );
-  const fetchedItems = useSelector((state: RootState) => state.articles?.items);
-  const recentHistoryTitles = useSelector((state: RootState) => state.recentHistory?.titles);
+  const suggestions = useSelector(selectAutocompleteSuggestions);
+  const fetchedSuggestions = useSelector(selectFetchedSuggestions);
+  const fetchedItems = useSelector(selectFetchedItems);
+  const recentHistoryTitles = useSelector(selectRecentHistoryTitles);
   const dispatch = useDispatch();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const blurTimeoutRef = useRef<number | null>(null);
