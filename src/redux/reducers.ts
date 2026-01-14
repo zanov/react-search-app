@@ -18,6 +18,7 @@ const itemsInitialState = {
 
 const searchListInitialState = {
   items: [] as object[],
+  duration: 0 as number,
 };
 
 const recentHistoryInitialState = {
@@ -55,11 +56,15 @@ const itemsReducer = (state = itemsInitialState, action: any) => {
 
 const searchListReducer = (state = searchListInitialState, action: any) => {
   switch (action.type) {
-    case SET_SEARCH_LIST:
+    case SET_SEARCH_LIST: {
+      const start = action.meta?.startTime;
+      const duration = start ? Date.now() - start : 0;
       return {
         ...state,
         items: action.payload,
+        duration,
       };
+    }
     default:
       return state;
   }

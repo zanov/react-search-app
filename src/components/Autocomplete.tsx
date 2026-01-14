@@ -48,7 +48,7 @@ const Autocomplete: React.FC = () => {
     const results = fetchedItems.filter((item: any) =>
       item.title.toLowerCase().includes(selectedTitle.toLowerCase()),
     );
-    dispatch(setSearchList(results));
+    dispatch(setSearchList(results, Date.now()));
     dispatch(setRecentHistoryTitle(selectedTitle));
     setIsSuggestionsVisible(false);
   };

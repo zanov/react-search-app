@@ -29,9 +29,10 @@ export const clearRecentHistoryTitle = (title: string) => ({
   title,
 });
 
-export const setSearchList = (results: object[]) => ({
+export const setSearchList = (results: object[], startTime?: number) => ({
   type: SET_SEARCH_LIST,
   payload: results,
+  meta: {startTime},
 });
 
 export const fetchAllItemsBegin = () => ({
